@@ -1,4 +1,4 @@
-import type {NextPage} from 'next'
+import type {NextPage} from 'next';
 import {gql} from '@apollo/client';
 import client from '../lib/apollo';
 import PartsList from '../components/PartsList';
