@@ -1,23 +1,23 @@
 import type {NextPage} from 'next'
 import {gql} from '@apollo/client';
 import client from '../lib/apollo';
-import PartsList from '../components/PartsList';
-import { IPartsProps  } from '../types';
+import PartsList from "../components/PartsList";
+import {IPartsProps} from "../types";
 
 const Parts: NextPage<IPartsProps> = ({parts}) => {
     return (
-        <PartsList parts={parts} />
+        <PartsList parts={parts}/>
     )
 }
 
 export default Parts;
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
     const {data} = await client.query({
         query: gql`
         query Parts {
-  parts(filter: {status: {_eq: "published"}}, limit: 10) {
-      body {
+   parts(filter: {status: {_eq: "published"}}, limit: 10) {
+     body {
       id
       name
     }
