@@ -1,67 +1,16 @@
-import type {NextPage} from 'next';
-import {gql} from '@apollo/client';
-import client from '../lib/apollo';
-import PartsList from '../components/PartsList';
-import { IPartsProps  } from '../types';
+import type {NextPage} from 'next'
+import {useQuery} from '@apollo/client';
+import PartsList from "../components/PartsList";
+import GET_PARTS from "../lib/graphql/query/getAllParts";
 
-const Parts: NextPage<IPartsProps> = ({parts}) => {
+const Parts = () => {
+    const { loading, error, data } = useQuery(GET_PARTS);
+
+    if (loading) return null;
+    if (error) return `Error! ${error}`;
     return (
-        <PartsList parts={parts} />
+        <PartsList parts={data.parts}/>
     )
 }
 
 export default Parts;
-
-export async function getStaticProps() {
-    const {data} = await client.query({
-        query: gql`
-        query Parts {
-  parts(filter: {status: {_eq: "published"}}, limit: 10) {
-      body {
-      id
-      name
-    }
-    article
-    category {
-      id
-      name
-    }
-    code
-    description
-    engine_type {
-      id
-      name
-    }
-    engine_volume
-    fuel {
-      id
-      name
-    }
-    id
-    model {
-      id
-      name
-      code
-      brand {
-        code
-        id
-        name
-      }
-    }
-    price
-    version
-    year
-    files {
-      id
-    }
-  }
-}
-      `,
-    });
-
-    return {
-        props: {
-            parts: data.parts,
-        },
-    };
-}

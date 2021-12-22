@@ -48,12 +48,12 @@ export const NavigationListItem = styled.div`
   cursor: pointer;
 `
 export const FooterContainer = styled.footer`
-    width: 100%;
-    height: 100px;
-    border-top: 1px solid #eaeaea;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  width: 100%;
+  height: 100px;
+  border-top: 1px solid #eaeaea;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
 
 export const FooterLogo = styled.span`
@@ -76,19 +76,19 @@ export const MainGrid = styled.div`
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  max-width: 800px;
+  max-width: 1000px;
 `
 
 export const MainCard = styled.div`
-  margin: 1rem;
-  padding: 1rem;
+  margin: 0.5rem;
+  padding: 0.5rem;
   text-align: left;
   color: inherit;
   text-decoration: none;
   border: 1px solid #eaeaea;
   border-radius: 10px;
   transition: color 0.15s ease, border-color 0.15s ease;
-  width: 360px;
+  width: 410px;
   min-height: 170px;
 
   &:hover {
