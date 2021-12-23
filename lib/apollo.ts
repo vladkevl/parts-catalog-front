@@ -2,21 +2,14 @@ import {ApolloClient, InMemoryCache, HttpLink, NormalizedCacheObject} from "@apo
 import merge from 'deepmerge';
 import isEqual from 'lodash.isequal';
 import {useMemo} from "react";
-import type { AppProps } from 'next/app'
-
-// export const graphqlClient = () => new ApolloClient({
-//     ssrMode: typeof window === 'undefined', // set to true for SSR
-//     link: new HttpLink({
-//         uri: 'https://api.parts.itspec.by/graphql',
-//     }),
-//     cache: new InMemoryCache(),
-// });
+import type {AppProps} from 'next/app'
+import {offsetLimitPagination} from "@apollo/client/utilities";
 
 export const APOLLO_STATE_PROP_NAME = '__APOLLO_STATE__';
 
 let apolloClient: ApolloClient<NormalizedCacheObject> | undefined;
 
-const createApolloClient  = (initialState = {}) => {
+const createApolloClient = (initialState = {}) => {
     const isDev = process.env.NODE_ENV !== 'production';
     const url = isDev ? 'https://api.parts.itspec.by' : '';
 
@@ -25,7 +18,17 @@ const createApolloClient  = (initialState = {}) => {
         uri: `${url}/graphql`,
         fetch,
     });
-    const cache = new InMemoryCache().restore(initialState);
+    const cache = new InMemoryCache(
+        {
+            typePolicies: {
+                Query: {
+                    fields: {
+                        parts: offsetLimitPagination(),
+                    },
+                },
+            },
+        }
+    ).restore(initialState || {});
 
     const client = new ApolloClient({
         ssrMode,

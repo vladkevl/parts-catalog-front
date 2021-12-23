@@ -48,4 +48,7 @@ export type IPartProps = {
 
 export type IPartsProps = {
     parts: IPart[];
+    onLoadMoreEnabled: boolean;
+    loadingMoreParts: boolean;
+    onLoadMore: any;
 }
