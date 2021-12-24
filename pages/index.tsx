@@ -9,7 +9,11 @@ const Parts = () => {
     const {loading, error, data, fetchMore, networkStatus} = useQuery(GET_PARTS, {
         variables: {
             limit: limit,
-            offset: 0
+            offset: 0,
+            filter:
+                {
+                    status: {_eq: 'published'},
+                }
         },
         notifyOnNetworkStatusChange: true,
     });
@@ -27,7 +31,11 @@ const Parts = () => {
                        fetchMore({
                            variables: {
                                limit: limit,
-                               offset: data.parts.length
+                               offset: data.parts.length,
+                               filter:
+                                   {
+                                       status: {_eq: 'published'},
+                                   }
                            }
                        })
                    }/>
