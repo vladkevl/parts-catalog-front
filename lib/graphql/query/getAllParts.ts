@@ -2,7 +2,11 @@ import {gql} from "@apollo/client";
 
 const GET_PARTS = gql`
     query Parts($filter: parts_filter!, $limit: Int = 8, $offset: Int = 0) {
-        parts_aggregated {
+        categories(limit: -1) {
+            id
+            name
+        }
+        parts_aggregated(filter: $filter) {
             count {
                 id
             }

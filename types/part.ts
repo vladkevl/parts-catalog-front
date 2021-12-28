@@ -1,3 +1,12 @@
+export type ICategory = {
+    id: number;
+    name: string;
+}
+
+export type ICategoryProps = {
+    categories: ICategory[];
+}
+
 export type IPart = {
     id: number;
     model: {
@@ -11,10 +20,7 @@ export type IPart = {
         }
     }
     year: number;
-    category: {
-        id: number;
-        name: string;
-    }
+    category: ICategory;
     body?: {
         id: number;
         name: string;
@@ -48,7 +54,4 @@ export type IPartProps = {
 
 export type IPartsProps = {
     parts: IPart[];
-    onLoadMoreEnabled: boolean;
-    loadingMoreParts: boolean;
-    onLoadMore: any;
 }

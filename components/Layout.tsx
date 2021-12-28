@@ -1,13 +1,17 @@
 import Header from "./Header";
 import Footer from "./Footer";
-import {PropsWithChildren} from "react";
-import {Container} from "../styles/style";
+import React, {PropsWithChildren} from "react";
+import {Container, Main, MainGrid} from "../styles/style";
 
 const Layout = ({children}: PropsWithChildren<any>) => {
     return (
         <Container>
             <Header/>
-            {children}
+            <Main>
+                <MainGrid>
+                    {children}
+                </MainGrid>
+            </Main>
             <Footer/>
         </Container>
     )

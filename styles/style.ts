@@ -50,7 +50,7 @@ export const NavigationListItem = styled.div`
 export const FooterContainer = styled.footer`
   width: 100%;
   height: 100px;
-  border-top: 1px solid #eaeaea;
+  border-top: 1px solid ${color.LightGray};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -85,7 +85,7 @@ export const MainCard = styled.div`
   text-align: left;
   color: inherit;
   text-decoration: none;
-  border: 1px solid #eaeaea;
+  border: 1px solid ${color.LightGray};
   border-radius: 10px;
   transition: color 0.15s ease, border-color 0.15s ease;
   width: 410px;
@@ -94,4 +94,23 @@ export const MainCard = styled.div`
   &:hover {
     box-shadow: 0 0 6px 3px ${color.LightGray};
   }
+`
+
+export const FilterContainer = styled.div`
+  width: 100%;
+  height: 100px;
+  border: 1px solid ${color.LightGray};
+  border-radius: 10px;
+  margin: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
+export const LoadMoreContainer = styled.div`
+  width: 100%;
+  margin: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `
