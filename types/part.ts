@@ -7,6 +7,10 @@ export type ICategoryProps = {
     categories: ICategory[];
 }
 
+export type IPartsProps = {
+    filter: object;
+}
+
 export type IPart = {
     id: number;
     model: {
@@ -52,6 +56,6 @@ export type IPartProps = {
     part: IPart;
 }
 
-export type IPartsProps = {
+export type IPartsListProps = {
     parts: IPart[];
 }

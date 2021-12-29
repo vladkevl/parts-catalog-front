@@ -1,10 +1,10 @@
 import {NextPage} from "next";
 import {MainCard} from "../styles/style";
 import Link from "next/link";
-import type {IPart, IPartsProps} from '../types';
+import type {IPart, IPartsListProps} from '../types';
 import React from "react";
 
-const PartsList: NextPage<IPartsProps> = (props) => {
+const PartsList: NextPage<IPartsListProps> = (props) => {
     const {parts} = props;
 
     return (

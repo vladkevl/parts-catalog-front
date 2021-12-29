@@ -1,11 +1,14 @@
 import styled from "styled-components";
 
 const color = {
-    LightGray: '#ebebeb'
+    White: '#ffffff',
+    LightGray: '#ebebeb',
+    Background: '#f2f2f2'
 };
 
 export const Container = styled.div`
   padding: 0 2rem;
+  background-color: ${color.Background}
 `
 
 export const Navigation = styled.header`
@@ -67,7 +70,7 @@ export const Main = styled.main`
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 `
 
@@ -77,6 +80,7 @@ export const MainGrid = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   max-width: 1000px;
+  width: 100%;
 `
 
 export const MainCard = styled.div`
@@ -87,8 +91,9 @@ export const MainCard = styled.div`
   text-decoration: none;
   border: 1px solid ${color.LightGray};
   border-radius: 10px;
+  background-color: ${color.White};
   transition: color 0.15s ease, border-color 0.15s ease;
-  width: 410px;
+  width: 484px;
   min-height: 170px;
 
   &:hover {
@@ -101,6 +106,7 @@ export const FilterContainer = styled.div`
   height: 100px;
   border: 1px solid ${color.LightGray};
   border-radius: 10px;
+  background-color: ${color.White};
   margin: 0.5rem;
   display: flex;
   justify-content: center;

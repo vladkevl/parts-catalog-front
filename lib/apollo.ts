@@ -23,6 +23,12 @@ const createApolloClient = (initialState = {}) => {
             typePolicies: {
                 Query: {
                     fields: {
+                        feed: {
+                            keyArgs: false,
+                            merge(existing = [], incoming) {
+                                return [...existing, ...incoming];
+                            }
+                        },
                         parts: offsetLimitPagination(),
                     },
                 },

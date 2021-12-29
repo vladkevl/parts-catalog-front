@@ -1,33 +1,29 @@
 import {FilterContainer} from "../styles/style";
-import {NextPage} from "next";
 import {IFilterProps, ICategory} from "../types";
-import React, {useState, useEffect} from "react";
+import {useQuery} from "@apollo/client";
+import GET_CATEGORIES from "../lib/graphql/query/getCategories";
+import {NextPage} from "next";
 
 const Filter: NextPage<IFilterProps> = (props) => {
-    const {filter, categories, refetch} = props;
-    const [value, setValue] = useState(0);
+    const {filter, setFilter} = props;
+    const {loading, error, data} = useQuery(GET_CATEGORIES);
+
+    if (loading) return null;
+    if (error) return null;
 
     return (
         <FilterContainer>
             <select>
                 <option value={0} onClick={() => {
-                    setValue(0);
-                    refetch({
-                        limit: 10,
-                        offset: 0,
-                        filter: filter
-                    });
+                    setFilter({
+                        status: {_eq: 'published'},
+                    })
                 }}>
                     -
                 </option>
-                {categories.map((category: ICategory) => (
+                {data.categories.map((category: ICategory) => (
                     <option key={category.id} value={category.id} onClick={() => {
-                        setValue(category.id);
-                        refetch({
-                            limit: 10,
-                            offset: 0,
-                            filter: {...filter, category: {id: {_eq: Number(category.id)}}}
-                        });
+                        setFilter({...filter, category: {id: {_eq: Number(category.id)}}})
                     }}>
                         {category.name}
                     </option>
