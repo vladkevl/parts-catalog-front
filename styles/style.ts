@@ -1,5 +1,26 @@
 import styled from "styled-components";
 
+const size = {
+    mobileS: '320px',
+    mobileM: '375px',
+    mobileL: '425px',
+    tablet: '768px',
+    laptop: '1024px',
+    laptopL: '1440px',
+    desktop: '2560px'
+}
+
+export const device = {
+    mobileS: `(min-width: ${size.mobileS})`,
+    mobileM: `(min-width: ${size.mobileM})`,
+    mobileL: `(min-width: ${size.mobileL})`,
+    tablet: `(min-width: ${size.tablet})`,
+    laptop: `(min-width: ${size.laptop})`,
+    laptopL: `(min-width: ${size.laptopL})`,
+    desktop: `(min-width: ${size.desktop})`,
+    desktopL: `(min-width: ${size.desktop})`
+};
+
 const color = {
     White: '#ffffff',
     LightGray: '#ebebeb',
@@ -32,7 +53,7 @@ export const NavigationContainer = styled.nav`
   height: 80px;
   margin: 0 auto;
   padding: 0 1rem;
-  max-width: 1024px;
+  max-width: ${size.laptop};
 `
 
 export const NavigationList = styled.div`
@@ -77,9 +98,9 @@ export const Main = styled.main`
 export const MainGrid = styled.div`
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   flex-wrap: wrap;
-  max-width: 1000px;
+  max-width: ${size.laptop};
   width: 100%;
 `
 
@@ -93,11 +114,15 @@ export const MainCard = styled.div`
   border-radius: 10px;
   background-color: ${color.White};
   transition: color 0.15s ease, border-color 0.15s ease;
-  width: 484px;
+  width: 100%;
   min-height: 170px;
 
   &:hover {
     box-shadow: 0 0 6px 3px ${color.LightGray};
+  }
+
+  @media only screen and ${device.laptop} {
+    width: 496px;
   }
 `
 

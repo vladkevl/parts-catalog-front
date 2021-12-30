@@ -10,16 +10,16 @@ const Parts = (props: PropsWithChildren<IPartsProps>) => {
 
     const limit = 10;
 
-    const {loading, error, data, fetchMore, networkStatus, refetch} = useQuery(GET_PARTS, {
+    let options: object = {
         variables: {
             limit: limit,
             offset: 0,
             filter: filter
         },
         notifyOnNetworkStatusChange: true,
-        fetchPolicy: 'no-cache',
-        nextFetchPolicy: 'network-only'
-    });
+    }
+
+    const {loading, error, data, fetchMore, networkStatus, refetch} = useQuery(GET_PARTS, options);
 
     const loadingMoreParts = networkStatus === NetworkStatus.fetchMore
 

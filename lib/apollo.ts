@@ -11,7 +11,7 @@ let apolloClient: ApolloClient<NormalizedCacheObject> | undefined;
 
 const createApolloClient = (initialState = {}) => {
     const isDev = process.env.NODE_ENV !== 'production';
-    const url = isDev ? 'https://api.parts.itspec.by' : '';
+    const url = isDev ? 'https://api.parts.itspec.by' : 'https://api.parts.itspec.by';
 
     const ssrMode = typeof window === 'undefined';
     const link = new HttpLink({
@@ -23,13 +23,7 @@ const createApolloClient = (initialState = {}) => {
             typePolicies: {
                 Query: {
                     fields: {
-                        feed: {
-                            keyArgs: false,
-                            merge(existing = [], incoming) {
-                                return [...existing, ...incoming];
-                            }
-                        },
-                        parts: offsetLimitPagination(),
+                        parts: offsetLimitPagination(['filter']),
                     },
                 },
             },
