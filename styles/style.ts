@@ -116,6 +116,7 @@ export const MainCard = styled.div`
   transition: color 0.15s ease, border-color 0.15s ease;
   width: 100%;
   min-height: 170px;
+  cursor: pointer;
 
   &:hover {
     box-shadow: 0 0 6px 3px ${color.LightGray};
@@ -144,4 +145,19 @@ export const LoadMoreContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+`
+
+export const Skeleton = styled.div`
+  border-radius: .25rem;
+  display: block;
+  animation: loading 1.7s infinite linear;
+  background: #dedfe1;
+  background-image: -webkit-linear-gradient(to right, #dedfe1 0%, #f2f3f5 20%, #dedfe1 40%, #dedfe1 100%);
+  background-image: linear-gradient(to right, #dedfe1 0%, #f2f3f5 20%, #dedfe1 40%, #dedfe1 100%);
+  background-repeat: no-repeat;
+`
+
+export const SkeletonMainCardImage = styled(Skeleton)`
+  width: 100%;
+  height: 150px;
 `

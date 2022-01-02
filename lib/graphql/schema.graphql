@@ -1,0 +1,490 @@
+type Query {
+  bodies(filter: bodies_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [bodies]
+  bodies_by_id(id: ID!): bodies
+  bodies_aggregated(groupBy: [String], filter: bodies_filter, limit: Int, search: String, sort: [String]): [bodies_aggregated]
+  brands(filter: brands_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [brands]
+  brands_by_id(id: ID!): brands
+  brands_aggregated(groupBy: [String], filter: brands_filter, limit: Int, search: String, sort: [String]): [brands_aggregated]
+  categories(filter: categories_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [categories]
+  categories_by_id(id: ID!): categories
+  categories_aggregated(groupBy: [String], filter: categories_filter, limit: Int, search: String, sort: [String]): [categories_aggregated]
+  engine_type(filter: engine_type_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [engine_type]
+  engine_type_by_id(id: ID!): engine_type
+  engine_type_aggregated(groupBy: [String], filter: engine_type_filter, limit: Int, search: String, sort: [String]): [engine_type_aggregated]
+  fuels(filter: fuels_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [fuels]
+  fuels_by_id(id: ID!): fuels
+  fuels_aggregated(groupBy: [String], filter: fuels_filter, limit: Int, search: String, sort: [String]): [fuels_aggregated]
+  models(filter: models_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [models]
+  models_by_id(id: ID!): models
+  models_aggregated(groupBy: [String], filter: models_filter, limit: Int, search: String, sort: [String]): [models_aggregated]
+  parts(filter: parts_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [parts]
+  parts_by_id(id: ID!): parts
+  parts_aggregated(groupBy: [String], filter: parts_filter, limit: Int, search: String, sort: [String]): [parts_aggregated]
+  parts_files(filter: parts_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [parts_files]
+  parts_files_by_id(id: ID!): parts_files
+  parts_files_aggregated(groupBy: [String], filter: parts_files_filter, limit: Int, search: String, sort: [String]): [parts_files_aggregated]
+  transmissions(filter: transmissions_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [transmissions]
+  transmissions_by_id(id: ID!): transmissions
+  transmissions_aggregated(groupBy: [String], filter: transmissions_filter, limit: Int, search: String, sort: [String]): [transmissions_aggregated]
+}
+
+"""The `Boolean` scalar type represents `true` or `false`."""
+scalar Boolean
+
+"""ISO8601 Date values"""
+scalar Date
+
+"""
+The `Float` scalar type represents signed double-precision fractional values as specified by [IEEE 754](https://en.wikipedia.org/wiki/IEEE_floating_point).
+"""
+scalar Float
+
+"""
+The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `"4"`) or integer (such as `4`) input value will be accepted as an ID.
+"""
+scalar ID
+
+"""
+The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.
+"""
+scalar Int
+
+"""
+The `JSON` scalar type represents JSON values as specified by [ECMA-404](http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf).
+"""
+scalar JSON @specifiedBy(url: "http://www.ecma-international.org/publications/files/ECMA-ST/ECMA-404.pdf")
+
+"""
+The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.
+"""
+scalar String
+
+type bodies {
+  id: ID
+  name: String!
+}
+
+type bodies_aggregated {
+  group: JSON
+  avg: bodies_aggregated_fields
+  sum: bodies_aggregated_fields
+  count: bodies_aggregated_fields
+  countDistinct: bodies_aggregated_fields
+  avgDistinct: bodies_aggregated_fields
+  sumDistinct: bodies_aggregated_fields
+  min: bodies_aggregated_fields
+  max: bodies_aggregated_fields
+}
+
+type bodies_aggregated_fields {
+  id: Float
+}
+
+type brands {
+  id: ID
+  name: String!
+  code: String
+}
+
+type brands_aggregated {
+  group: JSON
+  avg: brands_aggregated_fields
+  sum: brands_aggregated_fields
+  count: brands_aggregated_fields
+  countDistinct: brands_aggregated_fields
+  avgDistinct: brands_aggregated_fields
+  sumDistinct: brands_aggregated_fields
+  min: brands_aggregated_fields
+  max: brands_aggregated_fields
+}
+
+type brands_aggregated_fields {
+  id: Float
+}
+
+type categories {
+  id: ID
+  name: String!
+}
+
+type categories_aggregated {
+  group: JSON
+  avg: categories_aggregated_fields
+  sum: categories_aggregated_fields
+  count: categories_aggregated_fields
+  countDistinct: categories_aggregated_fields
+  avgDistinct: categories_aggregated_fields
+  sumDistinct: categories_aggregated_fields
+  min: categories_aggregated_fields
+  max: categories_aggregated_fields
+}
+
+type categories_aggregated_fields {
+  id: Float
+}
+
+type datetime_functions {
+  year: Int
+  month: Int
+  week: Int
+  day: Int
+  weekday: Int
+  hour: Int
+  minute: Int
+  second: Int
+}
+
+type directus_files {
+  id: ID
+  storage: String!
+  filename_disk: String
+  filename_download: String!
+  title: String
+  type: String
+  folder: String
+  uploaded_by: String
+  uploaded_on: Date!
+  uploaded_on_func: datetime_functions
+  modified_by: String
+  modified_on: Date!
+  modified_on_func: datetime_functions
+  charset: String
+  filesize: Int
+  width: Int
+  height: Int
+  duration: Int
+  embed: String
+  description: String
+  location: String
+  tags: JSON
+  metadata: JSON
+}
+
+type engine_type {
+  id: ID
+  name: String!
+}
+
+type engine_type_aggregated {
+  group: JSON
+  avg: engine_type_aggregated_fields
+  sum: engine_type_aggregated_fields
+  count: engine_type_aggregated_fields
+  countDistinct: engine_type_aggregated_fields
+  avgDistinct: engine_type_aggregated_fields
+  sumDistinct: engine_type_aggregated_fields
+  min: engine_type_aggregated_fields
+  max: engine_type_aggregated_fields
+}
+
+type engine_type_aggregated_fields {
+  id: Float
+}
+
+type fuels {
+  id: ID
+  name: String!
+}
+
+type fuels_aggregated {
+  group: JSON
+  avg: fuels_aggregated_fields
+  sum: fuels_aggregated_fields
+  count: fuels_aggregated_fields
+  countDistinct: fuels_aggregated_fields
+  avgDistinct: fuels_aggregated_fields
+  sumDistinct: fuels_aggregated_fields
+  min: fuels_aggregated_fields
+  max: fuels_aggregated_fields
+}
+
+type fuels_aggregated_fields {
+  id: Float
+}
+
+type models {
+  id: ID
+  name: String!
+  brand(filter: brands_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): brands
+  code: String!
+}
+
+type models_aggregated {
+  group: JSON
+  avg: models_aggregated_fields
+  sum: models_aggregated_fields
+  count: models_aggregated_fields
+  countDistinct: models_aggregated_fields
+  avgDistinct: models_aggregated_fields
+  sumDistinct: models_aggregated_fields
+  min: models_aggregated_fields
+  max: models_aggregated_fields
+}
+
+type models_aggregated_fields {
+  id: Float
+  brand: Float
+}
+
+type parts {
+  id: ID
+  status: String!
+  user_created: String
+  date_created: Date
+  date_created_func: datetime_functions
+  user_updated: String
+  date_updated: Date
+  date_updated_func: datetime_functions
+  code: String
+  category(filter: categories_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): categories
+  description: String
+  model(filter: models_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): models
+  price: Int!
+  version: String
+  year: Int
+  engine_volume: Float
+  fuel(filter: fuels_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): fuels
+  transmission(filter: transmissions_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): transmissions
+  article: String
+  body(filter: bodies_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): bodies
+  url: String
+  engine_type(filter: engine_type_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): engine_type
+  files(filter: parts_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): [parts_files]
+}
+
+type parts_aggregated {
+  group: JSON
+  avg: parts_aggregated_fields
+  sum: parts_aggregated_fields
+  count: parts_aggregated_fields
+  countDistinct: parts_aggregated_fields
+  avgDistinct: parts_aggregated_fields
+  sumDistinct: parts_aggregated_fields
+  min: parts_aggregated_fields
+  max: parts_aggregated_fields
+}
+
+type parts_aggregated_fields {
+  id: Float
+  category: Float
+  model: Float
+  price: Float
+  year: Float
+  engine_volume: Float
+  fuel: Float
+  transmission: Float
+  body: Float
+  engine_type: Float
+}
+
+type parts_files {
+  id: ID
+  parts_id(filter: parts_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): parts
+  directus_files_id(filter: directus_files_filter, sort: [String], limit: Int, offset: Int, page: Int, search: String): directus_files
+}
+
+type parts_files_aggregated {
+  group: JSON
+  avg: parts_files_aggregated_fields
+  sum: parts_files_aggregated_fields
+  count: parts_files_aggregated_fields
+  countDistinct: parts_files_aggregated_fields
+  avgDistinct: parts_files_aggregated_fields
+  sumDistinct: parts_files_aggregated_fields
+  min: parts_files_aggregated_fields
+  max: parts_files_aggregated_fields
+}
+
+type parts_files_aggregated_fields {
+  id: Float
+  parts_id: Float
+}
+
+type transmissions {
+  id: ID
+  name: String!
+}
+
+type transmissions_aggregated {
+  group: JSON
+  avg: transmissions_aggregated_fields
+  sum: transmissions_aggregated_fields
+  count: transmissions_aggregated_fields
+  countDistinct: transmissions_aggregated_fields
+  avgDistinct: transmissions_aggregated_fields
+  sumDistinct: transmissions_aggregated_fields
+  min: transmissions_aggregated_fields
+  max: transmissions_aggregated_fields
+}
+
+type transmissions_aggregated_fields {
+  id: Float
+}
+
+input bodies_filter {
+  id: number_filter_operators
+  name: string_filter_operators
+  _and: [bodies_filter]
+  _or: [bodies_filter]
+}
+
+input brands_filter {
+  id: number_filter_operators
+  name: string_filter_operators
+  code: string_filter_operators
+  _and: [brands_filter]
+  _or: [brands_filter]
+}
+
+input categories_filter {
+  id: number_filter_operators
+  name: string_filter_operators
+  _and: [categories_filter]
+  _or: [categories_filter]
+}
+
+input date_filter_operators {
+  _eq: String
+  _neq: String
+  _gt: String
+  _gte: String
+  _lt: String
+  _lte: String
+  _null: Boolean
+  _nnull: Boolean
+}
+
+input datetime_function_filter_operators {
+  year: number_filter_operators
+  month: number_filter_operators
+  week: number_filter_operators
+  day: number_filter_operators
+  weekday: number_filter_operators
+  hour: number_filter_operators
+  minute: number_filter_operators
+  second: number_filter_operators
+}
+
+input directus_files_filter {
+  id: string_filter_operators
+  storage: string_filter_operators
+  filename_disk: string_filter_operators
+  filename_download: string_filter_operators
+  title: string_filter_operators
+  type: string_filter_operators
+  folder: string_filter_operators
+  uploaded_by: string_filter_operators
+  uploaded_on: date_filter_operators
+  uploaded_on_func: datetime_function_filter_operators
+  modified_by: string_filter_operators
+  modified_on: date_filter_operators
+  modified_on_func: datetime_function_filter_operators
+  charset: string_filter_operators
+  filesize: number_filter_operators
+  width: number_filter_operators
+  height: number_filter_operators
+  duration: number_filter_operators
+  embed: string_filter_operators
+  description: string_filter_operators
+  location: string_filter_operators
+  tags: string_filter_operators
+  metadata: string_filter_operators
+  _and: [directus_files_filter]
+  _or: [directus_files_filter]
+}
+
+input engine_type_filter {
+  id: number_filter_operators
+  name: string_filter_operators
+  _and: [engine_type_filter]
+  _or: [engine_type_filter]
+}
+
+input fuels_filter {
+  id: number_filter_operators
+  name: string_filter_operators
+  _and: [fuels_filter]
+  _or: [fuels_filter]
+}
+
+input models_filter {
+  id: number_filter_operators
+  name: string_filter_operators
+  brand: brands_filter
+  code: string_filter_operators
+  _and: [models_filter]
+  _or: [models_filter]
+}
+
+input number_filter_operators {
+  _eq: Float
+  _neq: Float
+  _in: [Float]
+  _nin: [Float]
+  _gt: Float
+  _gte: Float
+  _lt: Float
+  _lte: Float
+  _null: Boolean
+  _nnull: Boolean
+}
+
+input parts_files_filter {
+  id: number_filter_operators
+  parts_id: parts_filter
+  directus_files_id: directus_files_filter
+  _and: [parts_files_filter]
+  _or: [parts_files_filter]
+}
+
+input parts_filter {
+  id: number_filter_operators
+  status: string_filter_operators
+  user_created: string_filter_operators
+  date_created: date_filter_operators
+  date_created_func: datetime_function_filter_operators
+  user_updated: string_filter_operators
+  date_updated: date_filter_operators
+  date_updated_func: datetime_function_filter_operators
+  code: string_filter_operators
+  category: categories_filter
+  description: string_filter_operators
+  model: models_filter
+  price: number_filter_operators
+  version: string_filter_operators
+  year: number_filter_operators
+  engine_volume: number_filter_operators
+  fuel: fuels_filter
+  transmission: transmissions_filter
+  article: string_filter_operators
+  body: bodies_filter
+  url: string_filter_operators
+  engine_type: engine_type_filter
+  files: parts_files_filter
+  _and: [parts_filter]
+  _or: [parts_filter]
+}
+
+input string_filter_operators {
+  _eq: String
+  _neq: String
+  _contains: String
+  _ncontains: String
+  _starts_with: String
+  _nstarts_with: String
+  _ends_with: String
+  _nends_with: String
+  _in: [String]
+  _nin: [String]
+  _null: Boolean
+  _nnull: Boolean
+  _empty: Boolean
+  _nempty: Boolean
+}
+
+input transmissions_filter {
+  id: number_filter_operators
+  name: string_filter_operators
+  _and: [transmissions_filter]
+  _or: [transmissions_filter]
+}

@@ -4,6 +4,7 @@ import GET_PARTS from "../lib/graphql/query/getAllParts";
 import LoadMore from "../components/LoadMore";
 import React, {PropsWithChildren} from "react";
 import {IPartsProps} from "../types";
+import PartsSkeleton from "./PartsSkeleton";
 
 const Parts = (props: PropsWithChildren<IPartsProps>) => {
     const {filter} = props;
@@ -19,11 +20,11 @@ const Parts = (props: PropsWithChildren<IPartsProps>) => {
         notifyOnNetworkStatusChange: true,
     }
 
-    const {loading, error, data, fetchMore, networkStatus, refetch} = useQuery(GET_PARTS, options);
+    const {loading, error, data, fetchMore, networkStatus} = useQuery(GET_PARTS, options);
 
     const loadingMoreParts = networkStatus === NetworkStatus.fetchMore
 
-    if (loading && !loadingMoreParts) return null;
+    if (loading && !loadingMoreParts) return <PartsSkeleton/>;
     if (error) return null;
 
     const areMoreParts = data.parts.length < data.parts_aggregated[0].count.id;
