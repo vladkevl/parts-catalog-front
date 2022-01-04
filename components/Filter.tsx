@@ -1,14 +1,14 @@
 import {FilterContainer} from "../styles/style";
 import {IFilterProps, ICategory} from "../types";
 import {useQuery} from "@apollo/client";
-import GET_CATEGORIES from "../lib/graphql/query/getCategories";
+import GET_FILTERS from "../lib/graphql/query/getFilters";
 import {NextPage} from "next";
 import React, {ChangeEvent, useState} from "react";
 
 const Filter: NextPage<IFilterProps> = (props) => {
     const {filter, setFilter} = props;
     const [selectState, setSelectState] = useState({value: '0'});
-    const {loading, error, data} = useQuery(GET_CATEGORIES);
+    const {loading, error, data} = useQuery(GET_FILTERS);
 
     const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         setSelectState({value: event.target.value});
